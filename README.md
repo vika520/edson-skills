@@ -6,10 +6,10 @@
 
 ```bash
 # 方式一：skills CLI
-npx -y skills add https://github.com/<org>/edson-skills
+npx -y skills add https://github.com/vika520/edson-skills
 
 # 方式二：直接克隆
-git clone https://github.com/<org>/edson-skills.git
+git clone https://github.com/vika520/edson-skills.git
 ```
 
 ## 配置
