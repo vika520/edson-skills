@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "edson-shop": {
+      "url": "https://mcp.edsonshop.com/mcp",
+      "headers": {
+        "Authorization": "Bearer edson_sk_你的密钥"
+      }
+    }
+  }
+}

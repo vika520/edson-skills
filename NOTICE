@@ -1,0 +1,11 @@
+Edson Shop Skills
+Copyright 2026 Edson Shop contributors
+
+This product includes software and workflow documentation developed for
+Edson Shop (https://www.edsonshop.com), which is built on DEEIX-Chat
+(https://github.com/DEEIX-AI/DEEIX-Chat), licensed under the Apache License,
+Version 2.0.
+
+Skill prompts in `skills/` were adapted from Edson Shop's in-app skill
+workflows (电商图复刻 / 商品套图 / AI 抠图), originally authored for the
+Edson Shop platform.
