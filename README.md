@@ -27,7 +27,7 @@ export EDSON_API_BASE="https://www.edsonshop.com"   # 自部署实例改这里
 
 ```bash
 export EDSON_API_KEY=edson_sk_...
-python scripts/edson_api.py models                                   # 可用模型与单价
+python scripts/edson_api.py models                                   # 可用模型与积分单价
 python scripts/edson_api.py upload product.jpg                       # 上传 → file_id
 python scripts/edson_api.py cutout file_abc123                       # 抠图 → out/*.png
 ```
@@ -58,7 +58,7 @@ API 端点契约：`api/commands.json`；错误码与限额：根 `SKILL.md`。
 ## 限额与计费
 
 - 单任务输出 ≤4 张、输入图 ≤16 张；MCP 批量单批 ≤16 项。
-- 图片按次计费（`/agent/v1/models` 返回单价；gpt-image-2 ≈ 36 积分/张，1 积分 ≈ ¥0.01）。
+- 图片按次计费（`/agent/v1/models` 的 `pricing.call_credits_per_call` 为积分单价；gpt-image-2 = 36 积分/张，1 积分 ≈ ¥0.01，美元口径并存于 `call_usd_per_call`）。
 - 余额不足返回 `402 billing.insufficient_funds`；生成失败自动退还。
 - 结果 URL 为限时签名直连（约 1 小时），需长期保存请立即下载。
 

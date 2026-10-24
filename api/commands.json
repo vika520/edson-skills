@@ -5,23 +5,41 @@
     "endpoint": "/agent/v1/files",
     "method": "POST",
     "input": "multipart/form-data: file=<图片>",
-    "returns": ["file_id", "file_name", "mime_type", "size_bytes"]
+    "returns": [
+      "file_id",
+      "file_name",
+      "mime_type",
+      "size_bytes"
+    ]
   },
   "images_generations": {
     "name": "文生图",
     "description": "按提示词生成图片，最多 4 张/次。",
     "endpoint": "/agent/v1/images/generations",
     "method": "POST",
-    "required": ["prompt", "model"],
-    "optional": {"n": "1-4，默认 1", "options": "透传参数（size 等）", "mode": "sync（默认，挂起至完成）| async（返回 task_id 轮询）"}
+    "required": [
+      "prompt",
+      "model"
+    ],
+    "optional": {
+      "n": "1-4，默认 1",
+      "options": "透传参数（size 等）",
+      "mode": "sync（默认，挂起至完成）| async（返回 task_id 轮询）"
+    }
   },
   "images_edits": {
     "name": "图片编辑（图生图）",
     "description": "以 file_ids 或 image_urls 为参考图，按提示词重绘/改风格/改文案。",
     "endpoint": "/agent/v1/images/edits",
     "method": "POST",
-    "required": ["prompt", "model"],
-    "input_one_of": ["file_ids", "image_urls"],
+    "required": [
+      "prompt",
+      "model"
+    ],
+    "input_one_of": [
+      "file_ids",
+      "image_urls"
+    ],
     "limits": "输入图合计 ≤16；单任务输出 ≤4"
   },
   "images_cutout": {
@@ -29,8 +47,13 @@
     "description": "移除背景输出透明底 PNG；每张输入图独立输出；model 可省略。",
     "endpoint": "/agent/v1/images/cutout",
     "method": "POST",
-    "input_one_of": ["file_ids", "image_urls"],
-    "defaults": {"model": "白名单默认模型"}
+    "input_one_of": [
+      "file_ids",
+      "image_urls"
+    ],
+    "defaults": {
+      "model": "白名单默认模型"
+    }
   },
   "tasks": {
     "name": "任务查询",
@@ -40,19 +63,19 @@
   },
   "models": {
     "name": "模型列表",
-    "description": "白名单内可用模型与单价（美元/次）。",
+    "description": "白名单内可用模型与单价（积分/次为主口径，美元并存；1 积分 ≈ ¥0.01）。",
     "endpoint": "/agent/v1/models",
     "method": "GET"
   },
   "account": {
     "name": "账户",
-    "description": "计费模式、余额与用量摘要。",
+    "description": "计费模式、余额与用量摘要（balance_credits 积分口径 + usd_to_cny_rate 汇率）。",
     "endpoint": "/agent/v1/account",
     "method": "GET"
   },
   "usage": {
     "name": "消费记录",
-    "description": "分页用量账本。",
+    "description": "分页用量账本（billed_credits 积分口径）。",
     "endpoint": "/agent/v1/usage?page=1&page_size=20",
     "method": "GET"
   },
